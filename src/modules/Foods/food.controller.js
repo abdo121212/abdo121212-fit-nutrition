@@ -36,3 +36,11 @@ export const allFood = catchError(async (req, res, next) => {
 
   return res.status(200).json({ success: true, food });
 });
+
+export const deleteFood = catchError(async (req, res, next) => {
+  const food = await Food.findById(req.params.foodId);
+  if (!food) return next(new Error("Food not found"));
+
+  await Food.findByIdAndDelete(req.params.categoryId);
+  return res.json({ success: true, message: "Food deleted successfully" });
+});

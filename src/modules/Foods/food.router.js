@@ -4,7 +4,7 @@ import { isAuthroizted } from "./../../middleware/isAuthroizted.js";
 import { fileUploader, fliterObject } from "../../utils/fileUploader.js";
 import { isValid } from "../../middleware/validation.js";
 import { createFoodSchema } from "./food.validation.js";
-import { createFood, allFood } from "./food.controller.js";
+import { createFood, allFood, deleteFood } from "./food.controller.js";
 
 const router = Router();
 
@@ -17,6 +17,8 @@ router.post(
   fileUploader(fliterObject.image).single("food"),
   createFood
 );
+
+router.delete("/:foodId", deleteFood);
 
 router.get("/allFood", allFood);
 
