@@ -8,9 +8,9 @@ export const createFoodSchema = Joi.object({
   image: Joi.string(),
   protein: Joi.string(),
   calories: Joi.string(),
-  nutritional_benefits: Joi.string(),
-  category: Joi.string()
-  .valid(
+  nutritional_benefits_ar: Joi.string(),
+  nutritional_benefits_en: Joi.string(),
+  category: Joi.string().valid(
     "breakfast",
     "lunch",
     "dinner",

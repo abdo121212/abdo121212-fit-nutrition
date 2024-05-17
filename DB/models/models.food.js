@@ -7,8 +7,9 @@ const foodSchema = new Schema(
     article_summary_en: { type: String, required: true },
     article_summary_ar: { type: String, required: true },
     calories: { type: Number, required: true },
-    nutritional_benefits: { type: String, required: true },
-    image: {
+    nutritional_benefits_en: { type: String, required: true },
+    nutritional_benefits_ar: { type: String, required: true },
+      image: {
       url: { type: String, required: true },
       id: { type: String, required: true },
     },
