@@ -41,6 +41,6 @@ export const deleteFood = catchError(async (req, res, next) => {
   const food = await Food.findById(req.params.foodId);
   if (!food) return next(new Error("Food not found"));
 
-  await Food.findByIdAndDelete(req.params.categoryId);
+  await Food.findByIdAndDelete(req.params.foodId);
   return res.json({ success: true, message: "Food deleted successfully" });
 });
