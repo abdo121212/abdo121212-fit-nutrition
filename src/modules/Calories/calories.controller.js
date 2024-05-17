@@ -8,10 +8,10 @@ export const calculateCalories = catchError(async (req, res, next) => {
   if (gender === "male") {
     BMR = 88.362 + 13.397 * weight + 4.799 * height - 5.677 * finalAge;
     if (activityLevel == "low") {
-      BMR = BMR * 1.2;
+      BMR = BMR * 1.375;
     }
     if (activityLevel == "high") {
-      BMR = BMR * 1.375;
+      BMR = BMR * 1.55;
     }
     if (activityLevel == "middle") {
       BMR = BMR * 1.725;
@@ -19,10 +19,10 @@ export const calculateCalories = catchError(async (req, res, next) => {
   } else {
     BMR = 447.593 + 9.247 * weight + 3.098 * height - 4.33 * finalAge;
     if (activityLevel == "low") {
-      BMR = BMR * 1.2;
+      BMR = BMR * 1.375;
     }
     if (activityLevel == "high") {
-      BMR = BMR * 1.375;
+      BMR = BMR * 1.55;
     }
     if (activityLevel == "middle") {
       BMR = BMR * 1.725;
