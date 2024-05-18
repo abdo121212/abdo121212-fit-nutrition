@@ -17,7 +17,7 @@
 import multer, { diskStorage } from "multer";
 
 export const fliterObject = {
-  image: ["image/jpg", "image/png",  "image/jpeg"],
+  image: ["image/jpg", "image/png", "image/jpeg", "image/webp"],
   pdf: ["application/pdf"],
   video: ["video/mp4"],
 };
