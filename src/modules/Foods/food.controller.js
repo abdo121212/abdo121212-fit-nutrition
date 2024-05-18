@@ -8,9 +8,12 @@ export const createFood = catchError(async (req, res, next) => {
     name_en,
     article_summary_ar,
     article_summary_en,
-    nutritional_benefits,
     calories,
     category,
+    fats,
+    carbs,
+    quantity,
+    proteins,
   } = req.body;
 
   if (!req.file) return next(new Error("Image IS Required"));
@@ -25,8 +28,11 @@ export const createFood = catchError(async (req, res, next) => {
     article_summary_ar,
     article_summary_en,
     calories,
-    nutritional_benefits,
     category,
+    fats,
+    carbs,
+    quantity,
+    proteins,
   });
   return res.json({ success: true, food });
 });
