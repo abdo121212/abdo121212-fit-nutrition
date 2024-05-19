@@ -1,4 +1,5 @@
 import Joi from "joi";
+import { isValidObjectId } from "../../middleware/validation.js";
 
 export const createFoodSchema = Joi.object({
   name_ar: Joi.string(),
@@ -19,4 +20,8 @@ export const createFoodSchema = Joi.object({
     "light-breakfast",
     "snack"
   ),
+});
+
+export const gitFoodByIdSchema = Joi.object({
+  foodId: Joi.string().custom(isValidObjectId).required(),
 });

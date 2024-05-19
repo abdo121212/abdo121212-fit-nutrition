@@ -3,8 +3,13 @@ import { isAuthenticated } from "../../middleware/isAuthenticated.js";
 import { isAuthroizted } from "./../../middleware/isAuthroizted.js";
 import { fileUploader, fliterObject } from "../../utils/fileUploader.js";
 import { isValid } from "../../middleware/validation.js";
-import { createFoodSchema } from "./food.validation.js";
-import { createFood, allFood, deleteFood } from "./food.controller.js";
+import { createFoodSchema, gitFoodByIdSchema } from "./food.validation.js";
+import {
+  createFood,
+  allFood,
+  deleteFood,
+  getFoodById,
+} from "./food.controller.js";
 
 const router = Router();
 
@@ -20,6 +25,8 @@ router.post(
 
 router.delete("/:foodId", deleteFood);
 
-router.get("/allFood", allFood);
+router.get("/:foodId", isValid(gitFoodByIdSchema), getFoodById);
+
+router.get("/allFood", isAuthenticated, allFood);
 
 export default router;

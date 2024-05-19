@@ -50,3 +50,9 @@ export const deleteFood = catchError(async (req, res, next) => {
   await Food.findByIdAndDelete(req.params.foodId);
   return res.json({ success: true, message: "Food deleted successfully" });
 });
+
+export const getFoodById = catchError(async (req, res, next) => {
+  const food = await Food.findById(req.params.foodId);
+  if (!food) return next(new Error("Food Not Found !"));
+  return res.json({ success: true, food });
+});
