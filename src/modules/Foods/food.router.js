@@ -24,9 +24,8 @@ router.post(
 );
 
 router.delete("/:foodId", deleteFood);
+router.get("/allFood", allFood);
 
 router.get("/:foodId", isValid(gitFoodByIdSchema), getFoodById);
-
-router.get("/allFood", isAuthenticated, allFood);
 
 export default router;

@@ -39,7 +39,6 @@ export const createFood = catchError(async (req, res, next) => {
 
 export const allFood = catchError(async (req, res, next) => {
   const food = await Food.find();
-
   return res.status(200).json({ success: true, food });
 });
 

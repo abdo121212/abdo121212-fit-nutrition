@@ -12,7 +12,7 @@ export const sendEmail = async ({ to, subject, html, text }) => {
       pass: process.env.PASS,
     },
   });
-
+  //reciver
   const info = await transporter.sendMail({
     from: `"Fit_Nutrition" <${process.env.EMAIL} >`,
     to,
@@ -20,5 +20,4 @@ export const sendEmail = async ({ to, subject, html, text }) => {
     html,
     text,
   });
-  //reciver
 };
