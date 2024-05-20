@@ -15,6 +15,7 @@ const userSchema = new Schema(
       type: String,
       enum: ["Diet", "Bullking", "Fitness", "Strength"],
     },
+    perfect_weight: Number,
     isConfirmed: { type: Boolean, default: false },
     activationCode: String,
     forGetCode: String,
@@ -50,11 +51,11 @@ userSchema.virtual("finalAge").get(function () {
   );
   let age = today.getFullYear() - this.birthdays.getFullYear();
 
-  // if (today < thisYearBirthday) {
-  //   age--;
-  // }
+  if (today < thisYearBirthday) {
+    age--;
+  }
 
-  return age;
+  return age ;
 });
 
 userSchema.virtual("calories").get(function () {

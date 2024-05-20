@@ -11,9 +11,3 @@ cloudinary.config({
 export default cloudinary;
 
 
-
-// cloudinary.image("girls_yellow_wall.jpg", {transformation: [
-//   {aspect_ratio: "0.5", gravity: "auto", width: 433, crop: "fill"},
-//   {quality: "auto"},
-//   {fetch_format: "auto"}
-//   ]})

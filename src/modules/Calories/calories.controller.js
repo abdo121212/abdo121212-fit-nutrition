@@ -28,7 +28,6 @@ export const calculateCalories = catchError(async (req, res, next) => {
       BMR = BMR * 1.725;
     }
   }
-  console.log(req.user.finalAge);
   res.json({ sccess: true, BMR });
 });
 

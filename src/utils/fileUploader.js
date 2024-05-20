@@ -1,19 +1,3 @@
-// import multer, { diskStorage } from "multer";
-// import { nanoid } from "nanoid";
-
-// export const upload = ({ folder }) => {
-//   const storage = diskStorage({
-//     destination: `upload/${folder} `,
-//     filename: (req, file, cb) => {
-//       console.log(file);
-//       cb(null, nanoid() + "__" + file.originalname);
-//     },
-//   });
-
-//   const multerUpload = multer({ storage });
-//   return multerUpload;
-// };
-
 import multer, { diskStorage } from "multer";
 
 export const fliterObject = {

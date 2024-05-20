@@ -82,6 +82,9 @@ export const login = catchError(async (req, res, next) => {
   // check email
   const user = await User.findOne({ email });
 
+  console.log("Perfect Weight", user.perfect_weight);
+  console.log("Weight", user.weight);
+
   if (!user) return next(new Error("Invalid Email!", { cause: 400 }));
 
   // check password
@@ -151,9 +154,12 @@ export const nextInfo = catchError(async (req, res, next) => {
     },
     { new: true }
   );
+
+  req.user.perfect_weight = req.user.height / 2;
+  req.user.save();
   if (!nextInfo) return next(new Error("User not found"));
 
-  return res.json({ success: true, nextInfo });
+  return res.json({ success: true, perfect_weight: req.user.perfect_weight });
 });
 
 //send Forget Code
@@ -218,7 +224,7 @@ export const deleteUser = catchError(async (req, res, next) => {
 });
 
 export const getUser = catchError(async (req, res, next) => {
-  const user = await User.findOne({ email : req.user.email});
+  const user = await User.findOne({ email: req.user.email });
   if (!user) return next(new Error("User Not Found !"));
   return res.json({ success: true, user });
 });
