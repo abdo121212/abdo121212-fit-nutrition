@@ -82,9 +82,6 @@ export const login = catchError(async (req, res, next) => {
   // check email
   const user = await User.findOne({ email });
 
-  console.log("Perfect Weight", user.perfect_weight);
-  console.log("Weight", user.weight);
-
   if (!user) return next(new Error("Invalid Email!", { cause: 400 }));
 
   // check password
@@ -92,10 +89,7 @@ export const login = catchError(async (req, res, next) => {
   if (!matchPass) next(new Error("Invalid Password !", { cause: 400 }));
   // check phone
 
-  // if (user.OTPCode)
-  //   return next(
-  //     new Error("Please check your phone number exists message or gmail !")
-  //   );
+
   // check confrim Email
   if (!user.isConfirmed)
     return next(
