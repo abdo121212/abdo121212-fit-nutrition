@@ -5,7 +5,6 @@ import {
   loginSchema,
   activateSchema,
   forgetPassSchema,
-  nextInfoSchema,
   newPasswordSchema,
   OTPCodeSchema,
 } from "./auth.vaildation.js";
@@ -18,7 +17,7 @@ import {
   resetPassword,
   deleteUser,
   OTPCode,
-  getUser
+  getUser,
 } from "./auth.controller.js";
 import { isAuthenticated } from "../../middleware/isAuthenticated.js";
 const router = Router();
@@ -26,7 +25,7 @@ const router = Router();
 // register
 router.post("/register", isValid(registerSchema), register);
 // next Info
-router.post("/nextInfo", isAuthenticated, isValid(nextInfoSchema), nextInfo);
+router.post("/nextInfo", isAuthenticated, nextInfo);
 // login
 router.post("/login", isValid(loginSchema), login);
 // confirmEmail
@@ -43,5 +42,5 @@ router.patch(
 );
 router.delete("/deleteUser", deleteUser);
 
-router.get('/',isAuthenticated,getUser);
+router.get("/", isAuthenticated, getUser);
 export default router;

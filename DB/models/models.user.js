@@ -29,13 +29,9 @@ const userSchema = new Schema(
       },
       id: { type: String },
     },
-    // coverImage: [
-    //   { url: { type: String, required: true } },
-    //   { id: { type: String, required: true } },
-    // ],
     weight: { type: Number },
     height: { type: Number },
-    diseases: String,
+    diseases: { type: String },
     water_consumation: Number,
   },
   { timestamps: true }
@@ -55,7 +51,7 @@ userSchema.virtual("finalAge").get(function () {
     age--;
   }
 
-  return age ;
+  return age;
 });
 
 userSchema.virtual("calories").get(function () {
