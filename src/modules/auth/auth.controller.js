@@ -154,8 +154,8 @@ export const nextInfo = catchError(async (req, res, next) => {
 
   return res.json({
     success: true,
-    perfect_weight: req.user.perfect_weight,
-    info: req.user.diseases,
+    perfect_weight: height / 2,
+    diseases,
   });
 });
 
