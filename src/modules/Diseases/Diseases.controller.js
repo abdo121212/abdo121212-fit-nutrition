@@ -23,7 +23,7 @@ export const breakFastHeart = catchError(async (req, res, next) => {
     req.file.path,
     { folder: `/food/heart` }
   );
-  const breakFastHeart = await BreakHeart.create({
+  const breakFast = await BreakHeart.create({
     name_ar,
     name_en,
     image: { url: secure_url, id: public_id },
