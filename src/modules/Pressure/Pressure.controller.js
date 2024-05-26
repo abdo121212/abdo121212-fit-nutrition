@@ -111,8 +111,8 @@ export const dinnerPressure = catchError(async (req, res, next) => {
 });
 
 export const getBreakfast = catchError(async (req, res, next) => {
-  const breakFast = await BreakSugar.find();
-  return res.status(200).json({ success: true, breakFast });
+  const breakfast = await BreakSugar.find();
+  return res.status(200).json({ success: true, breakfast });
 });
 
 export const allLunch = catchError(async (req, res, next) => {
