@@ -3,7 +3,7 @@ import { catchError } from "./../../utils/catchError.js";
 import cloudinary from "./../../utils/cloud.js";
 import { SugarLunch } from "./../../../DB/models/sugar.lunch.js";
 import { SugarDinner } from "../../../DB/models/sugar.dinner.js";
-import { DinnerPro } from './../../../DB/models/dinner.proussrue.js';
+import { DinnerPro } from "./../../../DB/models/dinner.proussrue.js";
 
 export const sugarFastHeart = catchError(async (req, res, next) => {
   const {
@@ -116,11 +116,11 @@ export const allbreakfast = catchError(async (req, res, next) => {
 });
 
 export const allLunch = catchError(async (req, res, next) => {
-  const sugarLunch = await BreakSugar.find();
-  return res.status(200).json({ success: true, sugarLunch });
+  const Lunch = await BreakSugar.find();
+  return res.status(200).json({ success: true, Lunch });
 });
 
 export const alldinnerSugar = catchError(async (req, res, next) => {
-  const sugarDinner = await SugarDinner.find();
-  return res.status(200).json({ success: true, sugarDinner });
+  const dinner = await SugarDinner.find();
+  return res.status(200).json({ success: true, dinner });
 });

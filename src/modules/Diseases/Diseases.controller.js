@@ -36,7 +36,7 @@ export const breakFastHeart = catchError(async (req, res, next) => {
     quantity,
     proteins,
   });
-  return res.json({ success: true, breakFastHeart });
+  return res.json({ success: true, breakFast });
 });
 
 export const lunchHeart = catchError(async (req, res, next) => {
@@ -110,8 +110,8 @@ export const dinnerHeart = catchError(async (req, res, next) => {
 });
 
 export const getBreakfast = catchError(async (req, res, next) => {
-  const breakFastHeart = await BreakHeart.find();
-  return res.status(200).json({ success: true, breakFastHeart });
+  const breakFast = await BreakHeart.find();
+  return res.status(200).json({ success: true, breakFast });
 });
 
 export const allLunch = catchError(async (req, res, next) => {
