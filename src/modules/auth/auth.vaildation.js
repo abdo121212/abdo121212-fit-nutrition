@@ -14,7 +14,7 @@ export const nextInfoSchema = Joi.object({
   weight: Joi.number().required(),
   birthdays: Joi.string().required(),
   gender: Joi.string().required().valid("female", "male"),
-  diseases: Joi.string().valid("Sugar", "pressure", "heart"),
+  diseases: Joi.string(),
 });
 export const loginSchema = Joi.object({
   email: Joi.string()
