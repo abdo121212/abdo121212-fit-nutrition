@@ -32,16 +32,6 @@ router.post(
 );
 
 router.delete("/:foodId", deleteFood);
-// router.get("/allFood", allFood);
-
-// router.get("/:foodId", isValid(gitFoodByIdSchema), getFoodById);
-
-// router.post(
-//   "/breakfast",
-//   isValid(createFoodSchema),
-//   fileUploader(fliterObject.image).single("food"),
-//   breakfast
-// );
 
 router.get("/breakfast", getBreakfast);
 
@@ -59,6 +49,7 @@ router.post(
   snacks
 );
 
+
 router.get("/lunch", getlunch);
 router.get("/snacks", getSnacks);
 
@@ -75,13 +66,6 @@ router.post(
   isValid(createFoodSchema),
   fileUploader(fliterObject.image).single("food"),
   snacks
-);
-
-router.post(
-  "/breakfast",
-  isValid(createFoodSchema),
-  fileUploader(fliterObject.image).single("food"),
-  breakfast
 );
 
 router.get("/allFood", allFood);

@@ -89,7 +89,6 @@ export const login = catchError(async (req, res, next) => {
   if (!matchPass) next(new Error("Invalid Password !", { cause: 400 }));
   // check phone
 
-
   // check confrim Email
   if (!user.isConfirmed)
     return next(
@@ -153,7 +152,11 @@ export const nextInfo = catchError(async (req, res, next) => {
   req.user.save();
   if (!nextInfo) return next(new Error("User not found"));
 
-  return res.json({ success: true, perfect_weight: req.user.perfect_weight });
+  return res.json({
+    success: true,
+    perfect_weight: req.user.perfect_weight,
+    info: req.user.diseases,
+  });
 });
 
 //send Forget Code

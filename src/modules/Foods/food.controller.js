@@ -119,7 +119,7 @@ export const lunch = catchError(async (req, res, next) => {
     carbs,
     proteins,
   });
-  return res.json({ success: true, lunch : Giga });
+  return res.json({ success: true, lunch: Giga });
 });
 
 export const dinner = catchError(async (req, res, next) => {
@@ -199,9 +199,19 @@ export const getDinner = catchError(async (req, res, next) => {
   return res.status(200).json({ success: true, dinner });
 });
 
-
-
 export const getSnacks = catchError(async (req, res, next) => {
   const snacks = await Snacks.find();
   return res.status(200).json({ success: true, snacks });
 });
+
+export const deleteFoodForSnacks = catchError(async (req, res, next) => {
+  const food = await Snacks.findById(req.params.foodId);
+  if (!food) return next(new Error("Food not found"));
+
+  await Snacks.findByIdAndDelete(req.params.foodId);
+  return res.json({ success: true, message: "Food deleted successfully" });
+});
+
+
+
+

@@ -3,6 +3,9 @@ import authRouter from "../modules/auth/auth.router.js";
 import changeUser from "../modules/ChangeUser/changeUser.router.js";
 import calories from "../modules/Calories/calories.router.js";
 import food from "../modules/Foods/food.router.js";
+import diseases from "../modules/Diseases/Diseases.router.js";
+import sugar from "../modules/Sugar/sugar.router.js";
+import Pressure from "../modules/Pressure/router.Pressure.js";
 import compression from "compression";
 export const appRouter = (app, express) => {
   // cors
@@ -18,6 +21,9 @@ export const appRouter = (app, express) => {
   app.use("/change", changeUser);
   app.use("/calories", calories);
   app.use("/food", food);
+  app.use("/diseases", diseases);
+  app.use("/sugar", sugar);
+  app.use("/pressure", Pressure);
 
   // global error handler
   app.use((error, req, res, next) => {
