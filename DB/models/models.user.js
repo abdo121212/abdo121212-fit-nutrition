@@ -5,6 +5,7 @@ const userSchema = new Schema(
     fullName: { type: String, required: true, min: 10, max: 30 },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    finalAge: { type: String },
     birthdays: Date,
     role: { type: String, enum: ["admin", "user"], default: "user" },
     status: { type: String, enum: ["online", "offline"], default: "offline" },
@@ -38,21 +39,6 @@ const userSchema = new Schema(
 );
 
 // Define virtual middleware for calculating age
-userSchema.virtual("finalAge").get(function () {
-  const today = new Date();
-  const thisYearBirthday = new Date(
-    today.getFullYear(),
-    this.birthdays.getMonth(),
-    this.birthdays.getDate()
-  );
-  let age = today.getFullYear() - this.birthdays.getFullYear();
-
-  if (today < thisYearBirthday) {
-    age--;
-  }
-
-  return age;
-});
 
 userSchema.virtual("calories").get(function () {
   let BMR;

@@ -4,10 +4,28 @@ import cloudinary from "./../../utils/cloud.js";
 
 // name
 
-export const changeName = catchError(async (req, res, next) => {
+export const changeUser = catchError(async (req, res, next) => {
   const user = await User.findById(req.user._id);
   if (!user) return next(new Error(`User not found`));
+
+
+  console.log('====================================');
+  console.log('====================================');
+
   user.fullName = req.body.fullName ? req.body.fullName : user.fullName;
+  user.height = req.body.height ? req.body.height : user.height;
+
+  user.weight = req.body.weight ? req.body.weight : user.weight;
+  if (req.file) {
+  console.log("giga");
+
+    const { public_id, secure_url } = await cloudinary.uploader.upload(
+      req.file.path,
+      { public_id: user.profileImage.id }
+    );
+    user.profileImage.url = secure_url;
+  }
+  
 
   user.save();
   res.json({ success: true, user });
@@ -27,6 +45,7 @@ export const changeHeight = catchError(async (req, res, next) => {
   const user = await User.findById(req.user._id);
   if (!user) return next(new Error(`User not found`));
   user.height = req.body.height ? req.body.height : user.height;
+
   user.save();
   res.json({ success: true, user });
 });

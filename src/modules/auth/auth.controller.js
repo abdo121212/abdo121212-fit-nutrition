@@ -9,6 +9,7 @@ import randomstring from "randomstring";
 import { snedMessage } from "../../utils/snedMSM.js";
 import { forgetCodeTemp, signUpTemp } from "../../utils/generateHTML.js";
 import exp from "constants";
+import { log } from "console";
 
 // register
 export const register = catchError(async (req, res, next) => {
@@ -57,6 +58,10 @@ export const register = catchError(async (req, res, next) => {
     trainingPriority,
     objectives,
   });
+
+
+
+  console.log(birthdays);
 
   const isSend = sendEmail({
     to: email,
