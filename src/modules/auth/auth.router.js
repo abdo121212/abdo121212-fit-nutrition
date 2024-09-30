@@ -26,7 +26,7 @@ const router = Router();
 // register
 router.post("/register", isValid(registerSchema), register);
 // next Info
-router.post("/nextInfo", isAuthenticated, isValid(nextInfoSchema), nextInfo);
+router.post("/nextInfo", isAuthenticated, nextInfo);
 // login
 router.post("/login", isValid(loginSchema), login);
 // confirmEmail
