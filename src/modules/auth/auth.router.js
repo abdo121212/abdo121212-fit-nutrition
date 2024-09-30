@@ -7,6 +7,7 @@ import {
   forgetPassSchema,
   newPasswordSchema,
   OTPCodeSchema,
+  nextInfoSchema,
 } from "./auth.vaildation.js";
 import {
   activateAccount,
@@ -25,7 +26,7 @@ const router = Router();
 // register
 router.post("/register", isValid(registerSchema), register);
 // next Info
-router.post("/nextInfo", isAuthenticated, nextInfo);
+router.post("/nextInfo", isAuthenticated, isValid(nextInfoSchema), nextInfo);
 // login
 router.post("/login", isValid(loginSchema), login);
 // confirmEmail

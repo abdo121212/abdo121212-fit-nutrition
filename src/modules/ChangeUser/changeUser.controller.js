@@ -9,23 +9,19 @@ export const changeUser = catchError(async (req, res, next) => {
   if (!user) return next(new Error(`User not found`));
 
 
-  console.log('====================================');
-  console.log('====================================');
-
   user.fullName = req.body.fullName ? req.body.fullName : user.fullName;
+
   user.height = req.body.height ? req.body.height : user.height;
 
   user.weight = req.body.weight ? req.body.weight : user.weight;
-  if (req.file) {
-  console.log("giga");
 
+  if (req.file) {
     const { public_id, secure_url } = await cloudinary.uploader.upload(
       req.file.path,
       { public_id: user.profileImage.id }
     );
     user.profileImage.url = secure_url;
   }
-  
 
   user.save();
   res.json({ success: true, user });

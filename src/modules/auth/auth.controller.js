@@ -8,8 +8,6 @@ import crypto from "crypto";
 import randomstring from "randomstring";
 import { snedMessage } from "../../utils/snedMSM.js";
 import { forgetCodeTemp, signUpTemp } from "../../utils/generateHTML.js";
-import exp from "constants";
-import { log } from "console";
 
 // register
 export const register = catchError(async (req, res, next) => {
@@ -58,8 +56,6 @@ export const register = catchError(async (req, res, next) => {
     trainingPriority,
     objectives,
   });
-
-
 
   console.log(birthdays);
 
@@ -141,6 +137,9 @@ export const activateAccount = catchError(async (req, res, next) => {
 //
 export const nextInfo = catchError(async (req, res, next) => {
   const { gender, weight, height, birthdays, diseases } = req.body;
+
+  const user = req.user;
+
   const nextInfo = await User.findOneAndUpdate(
     req.user,
     {
@@ -153,8 +152,18 @@ export const nextInfo = catchError(async (req, res, next) => {
     { new: true }
   );
 
-  req.user.perfect_weight = req.user.height / 2;
-  req.user.save();
+  const dateNew = new Date();
+
+  console.log(dateNew.getFullYear());
+
+  const birthdaysUser = new Date(birthdays);
+
+  console.log(birthdaysUser.getFullYear());
+
+  user.finalAge = dateNew.getFullYear() - birthdaysUser.getFullYear();
+
+  user.perfect_weight = user.height / 2;
+  user.save();
   if (!nextInfo) return next(new Error("User not found"));
 
   return res.json({

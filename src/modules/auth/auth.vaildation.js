@@ -9,13 +9,13 @@ export const registerSchema = Joi.object({
   confirmPassword: Joi.string().valid(Joi.ref("password")).required(),
 }).required();
 
-// export const nextInfoSchema = Joi.object({
-//   height: Joi.number().required(),
-//   weight: Joi.number().required(),
-//   birthdays: Joi.string().required(),
-//   gender: Joi.string().required().valid("female", "male"),
-//   diseases: Joi.string(),
-// });
+export const nextInfoSchema = Joi.object({
+  height: Joi.number().required(),
+  weight: Joi.number().required(),
+  birthdays: Joi.date().required(),
+  gender: Joi.string().required().valid("female", "male"),
+  diseases: Joi.string(),
+});
 export const loginSchema = Joi.object({
   email: Joi.string()
     .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
