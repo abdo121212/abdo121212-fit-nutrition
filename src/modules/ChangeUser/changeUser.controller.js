@@ -8,7 +8,6 @@ export const changeUser = catchError(async (req, res, next) => {
   const user = await User.findById(req.user._id);
   if (!user) return next(new Error(`User not found`));
 
-
   user.fullName = req.body.fullName ? req.body.fullName : user.fullName;
 
   user.height = req.body.height ? req.body.height : user.height;

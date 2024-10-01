@@ -7,9 +7,15 @@ import { fileUploader, fliterObject } from "../../utils/fileUploader.js";
 
 const router = Router();
 
-router.patch("/user", isAuthenticated, isValid(changeUserSchema), changeUser);
+router.patch(
+  "/user",
+  isAuthenticated,
+  fileUploader(fliterObject.image).single("profileImage"),
+  isValid(changeUserSchema),
+  changeUser
+);
 
-// router.patch("/age", isAuthenticated, isValid(changeAgeSchema), changeAge);
+// router.patch("/age", isAuthenticated,, isValid(changeAgeSchema), changeAge);
 // router.patch(
 //   "/height",
 //   isAuthenticated,
