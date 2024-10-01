@@ -12,9 +12,9 @@ export const registerSchema = Joi.object({
 export const nextInfoSchema = Joi.object({
   height: Joi.number().required(),
   weight: Joi.number().required(),
+  diseases: Joi.string().valid("heart", "sugar", "pressure"  , ""),
   birthdays: Joi.date().required(),
   gender: Joi.string().required().valid("female", "male"),
-  diseases: Joi.string(),
 });
 export const loginSchema = Joi.object({
   email: Joi.string()

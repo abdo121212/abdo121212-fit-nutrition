@@ -158,12 +158,13 @@ export const nextInfo = catchError(async (req, res, next) => {
 
   const birthdaysUser = new Date(birthdays);
 
-  console.log(birthdaysUser.getFullYear());
 
   user.finalAge = dateNew.getFullYear() - birthdaysUser.getFullYear();
 
   user.perfect_weight = user.height / 2;
   user.save();
+
+  
   if (!nextInfo) return next(new Error("User not found"));
 
   return res.json({
