@@ -11,7 +11,6 @@ router.patch(
   "/user",
   isAuthenticated,
   fileUploader(fliterObject.image).single("profileImage"),
-  isValid(changeUserSchema),
   changeUser
 );
 
