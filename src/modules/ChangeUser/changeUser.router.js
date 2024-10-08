@@ -3,6 +3,7 @@ import { isAuthenticated } from "./../../middleware/isAuthenticated.js";
 import { changeUser, changeWeight } from "./changeUser.controller.js";
 import { fileUploader, fliterObject } from "../../utils/fileUploader.js";
 import { changeWeightSchema } from "./changeUser.validation.js";
+import { isValid } from "../../middleware/validation.js";
 
 const router = Router();
 
