@@ -69,14 +69,3 @@ export const changePhoto = catchError(async (req, res, next) => {
   return res.json({ success: true, user });
 });
 
-// user.save();
-
-// const id = req.user._id;
-
-// const user = await User.findByIdAndUpdate(
-//   id,
-//   {
-//     profileImage: req.file.path,
-//   },
-//   { new: true }
-// );
